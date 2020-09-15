@@ -13,28 +13,16 @@
       <th>Edit</th>
       <th>Delete</th>
     </tr>
-    <tr>
-      <td>Sviatoslav</td>
-      <td>Group</td>
-      <td>Classic</td>
-      <td>Text</td>
-      <td>Man</td>
-      <td><i class="material-icons">edit</i></td>
-      <td><i class="material-icons btn-del">delete</i></td>
-    </tr>
-    <tr>
-      <td>Ira</td>
-      <td>groupick</td>
-      <td>Rock</td>
-      <td>Sth</td>
-      <td>Women</td>
+    <tr *ngFor="let album of albums">
+      <td>{{ album.payload.doc.data().name }}</td>
+      <td>{{ album.payload.doc.data().band }}</td>
+      <td>{{ album.payload.doc.data().genre }}</td>
+      <td>{{ album.payload.doc.data().label }}</td>
+      <td>{{ album.payload.doc.data().producer }}</td>
       <td><i class="material-icons">edit</i></td>
       <td><i class="material-icons btn-del">delete</i></td>
     </tr>
   </table>
-  <tr *ngFor="let album of albums">
-    <td>{{ album.payload.doc.data().name }}</td>
- </tr>
 </div>
 <style>
   .head {

@@ -12,5 +12,6 @@ import { AlbumsRoutingModule } from './albums-routing.module';
   declarations: [
     AlbumsComponent
   ],
+
 })
 export class AlbumsModule { }

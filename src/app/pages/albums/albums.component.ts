@@ -14,10 +14,10 @@ export class AlbumsComponent implements OnInit {
     this.getAlbums();
   }
   albums: any;
-  getAlbums = () => 
-  this._albumsservise
-    .getAlbums()
-    .subscribe(res => (this.albums = res));
+  getAlbums = () =>
+    this._albumsservise
+      .getAlbums()
+      .subscribe(res => (this.albums = res));
 
 }
 
