@@ -1,17 +1,17 @@
 <div class="head">
   <h2>Albums</h2>
-  <button class="btn">+ Add</button>
+  <button class="btn" (click)="openForm()">+ Add</button>
 </div>
 <div class="cont">
-  <table class="table">
+  <table class="table" [hidden]="this.opened">
     <tr>
-      <th>Name</th>
-      <th>Band</th>
-      <th>Genre</th>
-      <th>Label</th>
-      <th>Producer</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th class="table-header">Name</th>
+      <th class="table-header">Band</th>
+      <th class="table-header">Genre</th>
+      <th class="table-header">Label</th>
+      <th class="table-header">Producers</th>
+      <th class="table-header">Edit</th>
+      <th class="table-header">Delete</th>
     </tr>
     <tr *ngFor="let album of albums">
       <td>{{ album.payload.doc.data().name }}</td>
@@ -23,6 +23,30 @@
       <td><i class="material-icons btn-del">delete</i></td>
     </tr>
   </table>
+  <div class="modal-form" [hidden]="!this.opened">
+    <form class="form" [formGroup]="this._albumsservise.form">
+      <div class="modal-title">
+        <h2>Add Album</h2>
+      </div>
+      <label> Name
+        <input type="text" class="input-field col s12" formControlName="name" placeholder="name">
+      </label>
+      <label> Band
+        <input type="text" formControlName="band" placeholder="band">
+      </label>
+      <label> Genre
+        <input type="text" formControlName="genre" placeholder="genre">
+      </label>
+      <label> Label
+        <input type="text" formControlName="label" placeholder="label">
+      </label>
+      <label> Producers
+        <input type="text" formControlName="producer" placeholder="producers">
+      </label>
+      <button type="button" formControlName="name" class="btn btn-stan" (click)="closeForm()">Close</button>
+      <button type="submit" formControlName="name" class="btn" (click)="addAlbum()">Ok</button>
+    </form>
+  </div>
 </div>
 <style>
   .head {
@@ -31,6 +55,20 @@
     align-items: center;
     background: #f4f3f3;
     padding: 20px 30px;
+  }
+
+  .form {
+    margin: 0 auto;
+    z-index: 5;
+    width: 400px;
+    background: rgb(250, 246, 246);
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  .btn-stan {
+    background: rgb(136, 136, 135);
+    margin-right: 15px;
   }
 
   .head h2 {
@@ -51,6 +89,17 @@
 
   .cont {
     padding: 5px 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  label {
+    font-size: 16px;
+    color: rgb(65, 52, 184)
+  }
+
+  .table-header {
+    color: rgb(65, 52, 184)
   }
 
 </style>

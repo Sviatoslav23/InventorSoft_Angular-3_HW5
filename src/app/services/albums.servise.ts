@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
+// import { ReactiveFormsModule } from "@angular/forms";
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -16,13 +17,14 @@ export class albumsservise {
         producer: new FormControl('')
         // completed: new FormControl(false)
     });
+    names = new FormControl('');
     //read
     getAlbums() {
         return this.firestore.collection("albums").snapshotChanges();
     }
 
     //create
-    create(data) {
+    createAlbum(data) {
         return new Promise<any>((resolve, reject) => {
             this.firestore
                 .collection("collectionNameHere")
