@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AlbumsComponent } from './albums.component';
 
 import { AlbumsRoutingModule } from './albums-routing.module';
 
@@ -7,6 +8,9 @@ import { AlbumsRoutingModule } from './albums-routing.module';
   imports: [
     CommonModule,
     AlbumsRoutingModule
-  ]
+  ],
+  declarations: [
+    AlbumsComponent
+  ],
 })
 export class AlbumsModule { }
