@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ang-crud-fb-f9abc": {
+      "hosting": {
+        "angular-service-training": [
+          "ang-crud-fb-f9abc"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<div class="head">
+  <h2>Albums</h2>
+  <button class="btn">+ Add</button>
+</div>
+<div class="cont">
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Band</th>
+      <th>Genre</th>
+      <th>Label</th>
+      <th>Producer</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr>
+      <td>Sviatoslav</td>
+      <td>Group</td>
+      <td>Classic</td>
+      <td>Text</td>
+      <td>Man</td>
+      <td><i class="material-icons">edit</i></td>
+      <td><i class="material-icons btn-del">delete</i></td>
+    </tr>
+    <tr>
+      <td>Ira</td>
+      <td>groupick</td>
+      <td>Rock</td>
+      <td>Sth</td>
+      <td>Women</td>
+      <td><i class="material-icons">edit</i></td>
+      <td><i class="material-icons btn-del">delete</i></td>
+    </tr>
+  </table>
+  <tr *ngFor="let album of albums">
+    <td>{{ album.payload.doc.data().name }}</td>
+ </tr>
+</div>
+<style>
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f4f3f3;
+    padding: 20px 30px;
+  }
+
+  .head h2 {
+    margin: 0;
+  }
+
+  .full {
+    width: 100%;
+  }
+
+  i {
+    cursor: pointer;
+  }
+
+  .btn-del {
+    color: red
+  }
+
+  .cont {
+    padding: 5px 30px;
+  }
+
+</style>

@@ -1,0 +1,133 @@
+[{
+    "name": "Parachutes",
+    "band": "Coldplay",
+    "genre": [
+      "Alternative rock",
+      "post-Britpop"
+    ],
+    "label": [
+      "Parlophone"
+    ],
+    "producer": [
+      "Chris Allison",
+      "Coldplay",
+      "Ken Nelson"
+    ],
+    "releaseDate": "10.07.2000"
+  },
+  {
+    "name": "A Rush of Blood to the Head",
+    "band": "Coldplay",
+    "genre": [
+      "Alternative rock",
+      "post-Britpop"
+    ],
+    "label": [
+      "Parlophone",
+      "Capitol"
+    ],
+    "producer": [
+      "Coldplay",
+      "Ken Nelson"
+    ],
+    "releaseDate": "26.08.2002"
+  },
+  {
+    "name": "X&Y",
+    "band": "Coldplay",
+    "genre": [
+      "Alternative rock",
+      "post-Britpop",
+      "space rock"
+    ],
+    "label": [
+      "Parlophone",
+      "Capitol"
+    ],
+    "producer": [
+      "Coldplay",
+      "Ken Nelson",
+      "Danton Supple"
+    ],
+    "releaseDate": "06.06.2005"
+  },
+  {
+    "name": "Viva la Vida or Death and All His Friends",
+    "band": "Coldplay",
+    "genre": [
+      "Alternative rock",
+      "pop rock",
+      "indie pop",
+      "art pop",
+      "art rock"
+    ],
+    "label": [
+      "Parlophone",
+      "Capitol"
+    ],
+    "producer": [
+      "Coldplay",
+      "Ken Nelson",
+      "Danton Supple"
+    ],
+    "releaseDate": "12.06.2008"
+  },
+  {
+    "name": "Mylo Xyloto",
+    "band": "Coldplay",
+    "genre": [
+      "Pop",
+      "pop rock",
+      "electronica"
+    ],
+    "label": [
+      "Parlophone",
+      "Capitol"
+    ],
+    "producer": [
+      "Markus Dravs",
+      "Daniel Green",
+      "Rik Simpson"
+    ],
+    "releaseDate": "19.10.2011"
+  },
+  {
+    "name": "Ghost Stories",
+    "band": "Coldplay",
+    "genre": [
+      "electronica",
+      "synth-pop"
+    ],
+    "label": [
+      "Parlophone",
+      "Atlantic"
+    ],
+    "producer": [
+      "Avicii",
+      "Coldplay",
+      "Paul Epworth",
+      "Jon Hopkins",
+      "Daniel Green",
+      "Rik Simpson"
+    ],
+    "releaseDate": "16.04.2014"
+  },
+  {
+    "name": "A Head Full of Dreams",
+    "band": "Coldplay",
+    "genre": [
+      "Pop",
+      "pop rock",
+      "alternative rock"
+    ],
+    "label": [
+      "Parlophone",
+      "Atlantic"
+    ],
+    "producer": [
+      "Rik Simpson",
+      "Stargate"
+    ],
+    "releaseDate": "4.12.2015"
+  }
+]
