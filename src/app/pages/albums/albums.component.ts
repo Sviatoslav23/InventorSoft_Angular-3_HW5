@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { albumsservise } from '../../services/albums.servise';
 import { of } from 'rxjs';
-// import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 // import { Albums } from '../albums/albums.model';
 
 @Component({
@@ -14,13 +14,7 @@ export class AlbumsComponent implements OnInit {
   opened = false;
   hideenForm = false;
   confirm = false;
-  // isEdit= false;
-  // get alb() {
-  //   let alb;
-  //   for (alb of this.albums) {
-  //     return alb;
-  //   }
-  // }
+
   albums: any;
 
   id: string;
@@ -30,15 +24,19 @@ export class AlbumsComponent implements OnInit {
   label: string;
   producer: string;
 
-  constructor(public _albumsservise: albumsservise) { }
-  // form = new FormGroup({
-  //   name: new FormControl(''),
-  //   band: new FormControl({ value: 'Coldplay', disabled: false }, Validators.required),
-  //   genre: new FormControl(''),
-  //   label: new FormControl(''),
-  //   producer: new FormControl('')
-  // completed: new FormControl(false)
-  // });
+  constructor(public _albumsservise: albumsservise, private fb: FormBuilder) { }
+  //FormBuilder
+  form = this.fb.group({
+    name: ['', Validators.required],
+    band: ['', Validators.required],
+    genre: [''],
+    label: [''],
+    producer: [''],
+    //email to FormArray
+    // emails: this.fb.array([
+    //   this.fb.control('')
+    // ])
+  });
 
   //read
   ngOnInit() {
@@ -56,6 +54,29 @@ export class AlbumsComponent implements OnInit {
       )
   }
 
+  //getter name
+  get nameValue() {
+    return this.form.get('name');
+  }
+  //getter band
+  get bandValue() {
+    return this.form.get('band');
+  }
+  //getter genre
+  get genreValue() {
+    return this.form.get('genre');
+  }
+  //getter label
+  get labelValue() {
+    return this.form.get('label');
+  }
+  //getter name
+  get producerValue() {
+    return this.form.get('producer');
+  }
+
+
+
   // form
   openForm() {
     this.opened = true;
@@ -63,29 +84,17 @@ export class AlbumsComponent implements OnInit {
 
   closeForm() {
     this.opened = false;
-    this.name = '';
-    this.band = '';
-    this.genre = '';
-    this.label = '';
-    this.producer = '';
+    this.form.reset();
   }
 
   //create
   onSubmit() {
-    let data = {};
-    data['name'] = this.name;
-    data['band'] = this.band;
-    data['genre'] = this.genre;
-    data['label'] = this.label;
-    data['producer'] = this.producer;
+    this.form.value.coffeeOrder = this.albums;
+    let data = this.form.value;
 
     this._albumsservise.createAlbum(data)
       .then(res => {
-        this.name = "";
-        this.band = "";
-        this.genre = "";
-        this.label = "";
-        this.producer = "";
+        this.form.reset();
         this.closeForm();
       }).catch(error => {
         console.log(error);
@@ -100,12 +109,24 @@ export class AlbumsComponent implements OnInit {
 
   //edit
   editAlbum(data) {
-    this.hideenForm = true;
-    this.editname = data.name;
-    this.editband = data.band;
-    this.editgenre = data.genre;
-    this.editlabel = data.label;
-    this.editproducer = data.producer;
+    // this.form.value.coffeeOrder = this.albums;
+    // let item = this.form.value;
+
+    // this._albumsservise.createAlbum(item)
+    //   .then(res => {
+    //     this.form.reset();
+    //     this.closeForm();
+    //   }).catch(error => {
+    //     console.log(error);
+    //   })
+
+    
+    // this.hideenForm = true;
+    // this.editname = data.name;
+    // this.editband = data.band;
+    // this.editgenre = data.genre;
+    // this.editlabel = data.label;
+    // this.editproducer = data.producer;
   }
   closeUpdate() {
     this.hideenForm = false;
