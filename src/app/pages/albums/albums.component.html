@@ -75,7 +75,9 @@
       <input type="text" class="form-control" [(ngModel)]="this.editproducer" name="producer" placeholder="producers">
     </label>
     <button type="button" class="btn btn-stan" (click)="closeUpdate()">Close</button>
+    <p *ngFor="let album of albums">
     <button type="submit" class="btn btn-primary" (click)="saveChanges(album)">Update Changes</button>
+  </p>
   </form>
 </div>
 
