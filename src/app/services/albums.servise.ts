@@ -26,7 +26,7 @@ export class albumsservise {
     //create
     createAlbum(data) {
         return this.firestore.collection('albums').add(data);
-    } 
+    }
 
     // update
     updateAlbum(dataId, data) {
@@ -36,5 +36,5 @@ export class albumsservise {
     //delete
     deleteAlbum(dataId) {
         this.firestore.doc('albums/' + dataId).delete();
-      }
+    }
 }

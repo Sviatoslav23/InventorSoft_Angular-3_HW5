@@ -11,8 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { albumsservise} from './services/albums.servise';
 
 import { ReactiveFormsModule } from "@angular/forms";
 
@@ -28,10 +26,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     MatIconModule,
     MatButtonModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
     ReactiveFormsModule
   ],
-  providers: [albumsservise],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

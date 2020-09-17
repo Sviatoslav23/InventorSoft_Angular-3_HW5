@@ -63,6 +63,11 @@ export class AlbumsComponent implements OnInit {
 
   closeForm() {
     this.opened = false;
+    this.name = '';
+    this.band = '';
+    this.genre = '';
+    this.label = '';
+    this.producer = '';
   }
 
   //create
