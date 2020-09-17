@@ -2,6 +2,7 @@
   <h2>Albums</h2>
   <button class="btn" (click)="openForm()">+ Add</button>
 </div>
+
 <div class="cont">
   <table class="table" [hidden]="this.opened">
     <tr>
@@ -13,41 +14,71 @@
       <th class="table-header">Edit</th>
       <th class="table-header">Delete</th>
     </tr>
-    <tr *ngFor="let album of albums">
-      <td>{{ album.payload.doc.data().name }}</td>
-      <td>{{ album.payload.doc.data().band }}</td>
-      <td>{{ album.payload.doc.data().genre }}</td>
-      <td>{{ album.payload.doc.data().label }}</td>
-      <td>{{ album.payload.doc.data().producer }}</td>
-      <td><i class="material-icons">edit</i></td>
-      <td><i class="material-icons btn-del">delete</i></td>
-    </tr>
+    <tbody [hidden]="this.hideenForm">
+      <tr *ngFor="let album of albums">
+        <td>{{ album.name }}</td>
+        <td>{{ album.band }}</td>
+        <td>{{ album.genre }}</td>
+        <td>{{ album.label }}</td>
+        <td>{{ album.producer }}</td>
+        <td><span (click)="editAlbum(album)"><i class="material-icons btn-edit edit-btn">edit</i></span></td>
+        <td><span (click)="deleteAlbum(album.id)"><i class="material-icons btn-del del-btn">delete</i></span></td>
+      </tr>
+    </tbody>
   </table>
+
   <div class="modal-form" [hidden]="!this.opened">
-    <form class="form" [formGroup]="this._albumsservise.form">
+    <form class="form">
+      <!-- (ngSubmit)="onSubmit()" -->
       <div class="modal-title">
         <h2>Add Album</h2>
       </div>
-      <label> Name
-        <input type="text" class="input-field col s12" formControlName="name" placeholder="name">
+      <label> Name*
+        <input type="text" class="form-control" [(ngModel)]="name" name="name" placeholder="name" required>
       </label>
-      <label> Band
-        <input type="text" formControlName="band" placeholder="band">
+      <label> Band*
+        <input type="text" [(ngModel)]="band" placeholder="band" name="band" class="form-control" required>
       </label>
       <label> Genre
-        <input type="text" formControlName="genre" placeholder="genre">
+        <input type="text" class="form-control" [(ngModel)]="genre" name="genre" placeholder="genre">
       </label>
       <label> Label
-        <input type="text" formControlName="label" placeholder="label">
+        <input type="text" class="form-control" [(ngModel)]="label" name="label" placeholder="label">
       </label>
       <label> Producers
-        <input type="text" formControlName="producer" placeholder="producers">
+        <input type="text" class="form-control" [(ngModel)]="producer" name="producer" placeholder="producers">
       </label>
-      <button type="button" formControlName="name" class="btn btn-stan" (click)="closeForm()">Close</button>
-      <button type="submit" formControlName="name" class="btn" (click)="addAlbum()">Ok</button>
+      <button type="button" class="btn btn-stan" (click)="closeForm()">Close</button>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Ok</button>
     </form>
   </div>
 </div>
+
+<div [hidden]="!this.hideenForm">
+  <form class="form">
+    <div class="modal-title">
+      <h2>Edit Album</h2>
+    </div>
+    <label> Name*
+      <input type="text" class="form-control" [(ngModel)]="this.editname" name="name" placeholder="name" required>
+    </label>
+    <label> Band*
+      <input type="text" [(ngModel)]="this.editband" placeholder="band" name="band" class="form-control" required>
+    </label>
+    <label> Genre
+      <input type="text" class="form-control" [(ngModel)]="this.editgenre" name="genre" placeholder="genre">
+    </label>
+    <label> Label
+      <input type="text" class="form-control" [(ngModel)]="this.editlabel" name="label" placeholder="label">
+    </label>
+    <label> Producers
+      <input type="text" class="form-control" [(ngModel)]="this.editproducer" name="producer" placeholder="producers">
+    </label>
+    <button type="button" class="btn btn-stan" (click)="closeUpdate()">Close</button>
+    <button type="submit" class="btn btn-primary" (click)="saveChanges(album)">Update Changes</button>
+  </form>
+</div>
+
 <style>
   .head {
     display: flex;
@@ -58,12 +89,12 @@
   }
 
   .form {
-    margin: 0 auto;
+    margin: 10px auto;
     z-index: 5;
     width: 400px;
     background: rgb(250, 246, 246);
     border-radius: 10px;
-    padding: 15px;
+    padding: 20px;
   }
 
   .btn-stan {
@@ -79,12 +110,17 @@
     width: 100%;
   }
 
-  i {
+  .btn-del {
+    color: red
+  }
+
+  .edit-btn,
+  .del-btn {
     cursor: pointer;
   }
 
-  .btn-del {
-    color: red
+  input {
+    color: rgb(65, 52, 184);
   }
 
   .cont {
@@ -95,11 +131,13 @@
 
   label {
     font-size: 16px;
-    color: rgb(65, 52, 184)
+    color: #000;
   }
 
-  .table-header {
-    color: rgb(65, 52, 184)
+
+  .table-header,
+  .edit-btn {
+    color: rgb(65, 52, 184);
   }
 
 </style>

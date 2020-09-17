@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlbumsComponent } from './albums.component';
 
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,8 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
-
-
+import { albumsservise} from '../../services/albums.servise';
 
 import { AlbumsRoutingModule } from './albums-routing.module';
 
@@ -21,6 +20,7 @@ import { AlbumsRoutingModule } from './albums-routing.module';
     CommonModule,
     AlbumsRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -30,6 +30,7 @@ import { AlbumsRoutingModule } from './albums-routing.module';
   declarations: [
     AlbumsComponent
   ],
+  providers: [albumsservise],
   bootstrap: [AlbumsComponent]
 
 })

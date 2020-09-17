@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { albumsservise } from '../../services/albums.servise';
+import { of } from 'rxjs';
+// import { FormControl, FormGroup, Validators } from "@angular/forms";
+// import { Albums } from '../albums/albums.model';
 
 @Component({
   selector: 'app-albums',
@@ -8,22 +11,48 @@ import { albumsservise } from '../../services/albums.servise';
 })
 export class AlbumsComponent implements OnInit {
 
-  constructor(public _albumsservise: albumsservise) { }
-  ngOnInit() {
-    this.getAlbums();
-  }
   opened = false;
+  hideenForm = false;
+  // isEdit= false;
+  // get alb() {
+  //   let alb;
+  //   for (alb of this.albums) {
+  //     return alb;
+  //   }
+  // }
   albums: any;
 
+  id: string;
+  name: string;
+  band: string;
+  genre: string;
+  label: string;
+  producer: string;
+
+  constructor(public _albumsservise: albumsservise) { }
+  // form = new FormGroup({
+  //   name: new FormControl(''),
+  //   band: new FormControl({ value: 'Coldplay', disabled: false }, Validators.required),
+  //   genre: new FormControl(''),
+  //   label: new FormControl(''),
+  //   producer: new FormControl('')
+  // completed: new FormControl(false)
+  // });
+
   //read
-  getAlbums = () =>
-    this._albumsservise
-      .getAlbums()
-      .subscribe(res => (this.albums = res));
-
-  //create
-  addAlbum() {
-
+  ngOnInit() {
+    this._albumsservise.getAlbums()
+      .subscribe(res => (this.albums = res.map(e => {
+        return {
+          id: e.payload.doc.id,
+          name: e.payload.doc.data()["name"],
+          band: e.payload.doc.data()["band"],
+          genre: e.payload.doc.data()["genre"],
+          label: e.payload.doc.data()["label"],
+          producer: e.payload.doc.data()["producer"]
+        };
+      }))
+      )
   }
 
   // form
@@ -35,18 +64,62 @@ export class AlbumsComponent implements OnInit {
     this.opened = false;
   }
 
+  //create
   onSubmit() {
+    let data = {};
+    data['name'] = this.name;
+    data['band'] = this.band;
+    data['genre'] = this.genre;
+    data['label'] = this.label;
+    data['producer'] = this.producer;
 
+    this._albumsservise.createAlbum(data)
+      .then(res => {
+        this.name = "";
+        this.band = "";
+        this.genre = "";
+        this.label = "";
+        this.producer = "";
+        this.closeForm();
+      }).catch(error => {
+        console.log(error);
+      })
   }
-  // onSubmit() {
-  //   this._albumsservise.form.value.albums = this._albumsservise;
-  //   let data = this._albumsservise.form.value;
 
-  //   this._albumsservise.createAlbum(data)
-  //     .then(res => {
+  editname: string;
+  editband: string;
+  editgenre: string;
+  editlabel: string;
+  editproducer: string;
 
-  //     });
-  // }
+  //edit
+  editAlbum(data) {
+    this.hideenForm = true;
+    this.editname = data.name;
+    this.editband = data.band;
+    this.editgenre = data.genre;
+    this.editlabel = data.label;
+    this.editproducer = data.producer;
+  }
+  closeUpdate() {
+    this.hideenForm = false;
+  }
+
+  //delete
+  deleteAlbum(dataId) {
+    this._albumsservise.deleteAlbum(dataId);
+  }
+
+  saveChanges(item: any) {
+    let data = {};
+    data['name'] = item.editname;
+    data['band'] = item.editband;
+    data['genre'] = item.editgenre;
+    data['label'] = item.editlabel;
+    data['producer'] = item.editproducer;
+    this._albumsservise.updateAlbum(item.id, item);
+    this.hideenForm = false;
+  }
 
 }
 

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup } from "@angular/forms";
-// import { ReactiveFormsModule } from "@angular/forms";
+// import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AngularFirestore } from '@angular/fire/firestore';
+
+// import { Albums } from '../pages/albums/albums.model';
 
 @Injectable({
     providedIn: 'root'
@@ -9,15 +10,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 export class albumsservise {
     constructor(private firestore: AngularFirestore) { }
-    form = new FormGroup({
-        name: new FormControl(''),
-        band: new FormControl(''),
-        genre: new FormControl(''),
-        label: new FormControl(''),
-        producer: new FormControl('')
-        // completed: new FormControl(false)
-    });
-    names = new FormControl('');
+    // form = new FormGroup({
+    //     name: new FormControl(''),
+    //     band: new FormControl({value: 'Coldplay', disabled: false}, Validators.required),
+    //     genre: new FormControl(''),
+    //     label: new FormControl(''),
+    //     producer: new FormControl('')
+    //     // completed: new FormControl(false)
+    // });
     //read
     getAlbums() {
         return this.firestore.collection("albums").snapshotChanges();
@@ -25,24 +25,16 @@ export class albumsservise {
 
     //create
     createAlbum(data) {
-        return new Promise<any>((resolve, reject) => {
-            this.firestore
-                .collection("collectionNameHere")
-                .add(data)
-                .then(
-                    res => { },
-                    err => reject(err)
-                )
-        }
-        )
+        return this.firestore.collection('albums').add(data);
+    } 
+
+    // update
+    updateAlbum(dataId, data) {
+        this.firestore.doc("albums/" + dataId).update(data);
     }
 
-    //get (read)
-    // getDoc() {
-    //     return this.firestore
-    //         .doc('albums')
-    //     вы можете использовать: 
-    //     .valueChanges () 
-    //     или .snapshotChanges () 
-    // }
+    //delete
+    deleteAlbum(dataId) {
+        this.firestore.doc('albums/' + dataId).delete();
+      }
 }

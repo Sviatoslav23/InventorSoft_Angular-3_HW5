@@ -1,4 +1,5 @@
 [{
+    "id": 1,
     "name": "Parachutes",
     "band": "Coldplay",
     "genre": [
@@ -12,10 +13,10 @@
       "Chris Allison",
       "Coldplay",
       "Ken Nelson"
-    ],
-    "releaseDate": "10.07.2000"
+    ]
   },
   {
+    "id": 2,
     "name": "A Rush of Blood to the Head",
     "band": "Coldplay",
     "genre": [
@@ -29,10 +30,10 @@
     "producer": [
       "Coldplay",
       "Ken Nelson"
-    ],
-    "releaseDate": "26.08.2002"
+    ]
   },
   {
+    "id": 3,
     "name": "X&Y",
     "band": "Coldplay",
     "genre": [
@@ -48,10 +49,10 @@
       "Coldplay",
       "Ken Nelson",
       "Danton Supple"
-    ],
-    "releaseDate": "06.06.2005"
+    ]
   },
   {
+    "id": 4,
     "name": "Viva la Vida or Death and All His Friends",
     "band": "Coldplay",
     "genre": [
@@ -69,10 +70,10 @@
       "Coldplay",
       "Ken Nelson",
       "Danton Supple"
-    ],
-    "releaseDate": "12.06.2008"
+    ]
   },
   {
+    "id": 5,
     "name": "Mylo Xyloto",
     "band": "Coldplay",
     "genre": [
@@ -88,10 +89,10 @@
       "Markus Dravs",
       "Daniel Green",
       "Rik Simpson"
-    ],
-    "releaseDate": "19.10.2011"
+    ]
   },
   {
+    "id": 6,
     "name": "Ghost Stories",
     "band": "Coldplay",
     "genre": [
@@ -109,10 +110,10 @@
       "Jon Hopkins",
       "Daniel Green",
       "Rik Simpson"
-    ],
-    "releaseDate": "16.04.2014"
+    ]
   },
   {
+    "id": 7,
     "name": "A Head Full of Dreams",
     "band": "Coldplay",
     "genre": [
@@ -127,7 +128,6 @@
     "producer": [
       "Rik Simpson",
       "Stargate"
-    ],
-    "releaseDate": "4.12.2015"
+    ]
   }
 ]

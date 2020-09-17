@@ -23,8 +23,7 @@ albums.forEach(function (obj) {
             band: obj.band,
             genre: obj.genre,
             label: obj.label,
-            producer: obj.producer,
-            releaseDate: new Date(obj.releaseDate)
+            producer: obj.producer
         })
         .then(function (docRef) {
             console.log("Document written with ID: ", docRef.id);
