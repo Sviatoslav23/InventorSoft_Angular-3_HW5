@@ -10,14 +10,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 export class albumsservise {
     constructor(private firestore: AngularFirestore) { }
-    // form = new FormGroup({
-    //     name: new FormControl(''),
-    //     band: new FormControl({value: 'Coldplay', disabled: false}, Validators.required),
-    //     genre: new FormControl(''),
-    //     label: new FormControl(''),
-    //     producer: new FormControl('')
-    //     // completed: new FormControl(false)
-    // });
     //read
     getAlbums() {
         return this.firestore.collection("albums").snapshotChanges();

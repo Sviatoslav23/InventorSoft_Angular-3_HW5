@@ -10,8 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { albumsservise} from '../../services/albums.servise';
 
 import { AlbumsRoutingModule } from './albums-routing.module';
 
@@ -25,12 +23,10 @@ import { AlbumsRoutingModule } from './albums-routing.module';
     MatIconModule,
     MatButtonModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
   ],
   declarations: [
     AlbumsComponent
   ],
-  providers: [albumsservise],
   bootstrap: [AlbumsComponent]
 
 })
