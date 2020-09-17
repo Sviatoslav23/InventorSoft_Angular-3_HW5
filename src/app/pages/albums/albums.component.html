@@ -1,5 +1,7 @@
 <div class="head">
-  <h2>Albums</h2>
+  <a href="./">
+    <h2>Albums</h2>
+  </a>
   <button class="btn" (click)="openForm()">+ Add</button>
 </div>
 
@@ -14,16 +16,48 @@
       <th class="table-header">Edit</th>
       <th class="table-header">Delete</th>
     </tr>
-    <tbody [hidden]="this.hideenForm">
-      <tr *ngFor="let album of albums">
+    <tbody *ngFor="let album of albums">
+      <tr [hidden]="this.hideenForm">
         <td>{{ album.name }}</td>
         <td>{{ album.band }}</td>
         <td>{{ album.genre }}</td>
         <td>{{ album.label }}</td>
         <td>{{ album.producer }}</td>
         <td><span (click)="editAlbum(album)"><i class="material-icons btn-edit edit-btn">edit</i></span></td>
-        <td><span (click)="deleteAlbum(album.id)"><i class="material-icons btn-del del-btn">delete</i></span></td>
+        <td><span (click)="confirmDelete()"><i class="material-icons btn-del del-btn">delete</i></span></td>
+        <div class="wrapper" [hidden]="!this.confirm">
+          <div class="confirmation">
+            <h2 style="text-align: center;">Do You really want to DELETE this data?</h2>
+            <button type="button" class="btn btn-stan" (click)="cancelConf()">Cancel</button>
+            <button type="button" class="btn" (click)="deleteAlbum(album.id)">Ok</button>
+          </div>
+        </div>
       </tr>
+      <div [hidden]="!this.hideenForm">
+        <form class="form">
+          <div class="modal-title">
+            <h2>Edit Album</h2>
+          </div>
+          <label> Name*
+            <input type="text" class="form-control" [(ngModel)]="this.editname" name="name" placeholder="name" required>
+          </label>
+          <label> Band*
+            <input type="text" [(ngModel)]="this.editband" placeholder="band" name="band" class="form-control" required>
+          </label>
+          <label> Genre
+            <input type="text" class="form-control" [(ngModel)]="this.editgenre" name="genre" placeholder="genre">
+          </label>
+          <label> Label
+            <input type="text" class="form-control" [(ngModel)]="this.editlabel" name="label" placeholder="label">
+          </label>
+          <label> Producers
+            <input type="text" class="form-control" [(ngModel)]="this.editproducer" name="producer"
+              placeholder="producers">
+          </label>
+          <button type="button" class="btn btn-stan" (click)="closeUpdate()">Close</button>
+          <button type="submit" class="btn btn-primary" (click)="saveChanges(album)">Update Changes</button>
+        </form>
+      </div>
     </tbody>
   </table>
 
@@ -54,32 +88,6 @@
   </div>
 </div>
 
-<div [hidden]="!this.hideenForm">
-  <form class="form">
-    <div class="modal-title">
-      <h2>Edit Album</h2>
-    </div>
-    <label> Name*
-      <input type="text" class="form-control" [(ngModel)]="this.editname" name="name" placeholder="name" required>
-    </label>
-    <label> Band*
-      <input type="text" [(ngModel)]="this.editband" placeholder="band" name="band" class="form-control" required>
-    </label>
-    <label> Genre
-      <input type="text" class="form-control" [(ngModel)]="this.editgenre" name="genre" placeholder="genre">
-    </label>
-    <label> Label
-      <input type="text" class="form-control" [(ngModel)]="this.editlabel" name="label" placeholder="label">
-    </label>
-    <label> Producers
-      <input type="text" class="form-control" [(ngModel)]="this.editproducer" name="producer" placeholder="producers">
-    </label>
-    <button type="button" class="btn btn-stan" (click)="closeUpdate()">Close</button>
-    <p *ngFor="let album of albums">
-    <button type="submit" class="btn btn-primary" (click)="saveChanges(album)">Update Changes</button>
-  </p>
-  </form>
-</div>
 
 <style>
   .head {
@@ -88,6 +96,21 @@
     align-items: center;
     background: #f4f3f3;
     padding: 20px 30px;
+  }
+
+  .wrapper {
+    position: absolute;
+    top: 70px;
+    left: 700px;
+  }
+
+  .confirmation {
+    z-index: 5;
+    width: 200px;
+    background: rgb(250, 246, 246);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    padding: 20px;
   }
 
   .form {
@@ -136,9 +159,9 @@
     color: #000;
   }
 
-
   .table-header,
-  .edit-btn {
+  .edit-btn,
+  .head h2 {
     color: rgb(65, 52, 184);
   }
 

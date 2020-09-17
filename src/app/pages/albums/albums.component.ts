@@ -13,6 +13,7 @@ export class AlbumsComponent implements OnInit {
 
   opened = false;
   hideenForm = false;
+  confirm = false;
   // isEdit= false;
   // get alb() {
   //   let alb;
@@ -105,11 +106,6 @@ export class AlbumsComponent implements OnInit {
     this.hideenForm = false;
   }
 
-  //delete
-  deleteAlbum(dataId) {
-    this._albumsservise.deleteAlbum(dataId);
-  }
-
   saveChanges(item: any) {
     let data = {};
     data['name'] = item.editname;
@@ -119,6 +115,20 @@ export class AlbumsComponent implements OnInit {
     data['producer'] = item.editproducer;
     this._albumsservise.updateAlbum(item.id, item);
     this.hideenForm = false;
+  }
+
+  confirmDelete() {
+    this.confirm = true;
+  }
+
+  cancelConf() {
+    this.confirm = false;
+  }
+
+  //delete
+  deleteAlbum(dataId) {
+    this._albumsservise.deleteAlbum(dataId);
+    this.confirm = false;
   }
 
 }
