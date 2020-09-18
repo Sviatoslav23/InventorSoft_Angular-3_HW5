@@ -20,9 +20,9 @@ export class AlbumsComponent implements OnInit {
   id: string;
   name: string;
   band: string;
-  genre: string;
-  label: string;
-  producer: string;
+  genre: any;
+  label: any;
+  producer: any;
 
   constructor(public _albumsservise: albumsservise, private fb: FormBuilder) { }
   //FormBuilder
@@ -37,6 +37,14 @@ export class AlbumsComponent implements OnInit {
     //   this.fb.control('')
     // ])
   });
+
+  // editForm = this.fb.group({
+  //   editname: ['', Validators.required],
+  //   editband: ['', Validators.required],
+  //   editgenre: [''],
+  //   editlabel: [''],
+  //   editproducer: [''],
+  // });
 
   //read
   ngOnInit() {
@@ -76,7 +84,6 @@ export class AlbumsComponent implements OnInit {
   }
 
 
-
   // form
   openForm() {
     this.opened = true;
@@ -89,7 +96,7 @@ export class AlbumsComponent implements OnInit {
 
   //create
   onSubmit() {
-    this.form.value.coffeeOrder = this.albums;
+    this.form.value.albums = this.albums;
     let data = this.form.value;
 
     this._albumsservise.createAlbum(data)
@@ -101,45 +108,32 @@ export class AlbumsComponent implements OnInit {
       })
   }
 
-  editname: string;
-  editband: string;
-  editgenre: string;
-  editlabel: string;
-  editproducer: string;
-
   //edit
   editAlbum(data) {
-    // this.form.value.coffeeOrder = this.albums;
-    // let item = this.form.value;
-
-    // this._albumsservise.createAlbum(item)
-    //   .then(res => {
-    //     this.form.reset();
-    //     this.closeForm();
-    //   }).catch(error => {
-    //     console.log(error);
-    //   })
-
-    
-    // this.hideenForm = true;
-    // this.editname = data.name;
-    // this.editband = data.band;
-    // this.editgenre = data.genre;
-    // this.editlabel = data.label;
-    // this.editproducer = data.producer;
+    this.hideenForm = true;
+    this.form.patchValue({
+      name: data.name,
+      band: data.band,
+      genre: data.genre,
+      label: data.label,
+      producer: data.producer
+    });
   }
+
   closeUpdate() {
     this.hideenForm = false;
   }
 
   saveChanges(item: any) {
-    let data = {};
-    data['name'] = item.editname;
-    data['band'] = item.editband;
-    data['genre'] = item.editgenre;
-    data['label'] = item.editlabel;
-    data['producer'] = item.editproducer;
+    console.log(item);
+    // let data = {};
+    // data['name'] = item.name;
+    // data['band'] = item.band;
+    // data['genre'] = item.genre;
+    // data['label'] = item.label;
+    // data['producer'] = item.producer;
     this._albumsservise.updateAlbum(item.id, item);
+    // subscribe
     this.hideenForm = false;
   }
 

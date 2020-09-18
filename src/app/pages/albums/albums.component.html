@@ -62,34 +62,34 @@
   </div>
 </div>
 
-<!-- <div [hidden]="!this.hideenForm">
-  <form class="form" [formGroup]="this.editForm">
+<div [hidden]="!this.hideenForm">
+  <form class="form" [formGroup]="this.form">
     <div class="modal-title">
       <h2>Edit Album</h2>
     </div>
     <label> Name*
-      <input type="text" class="form-control" formControlName="editname" name="editname" placeholder="name" required>
+      <input type="text" class="form-control" formControlName="name" name="editname" placeholder="name" required>
     </label>
     <label> Band*
-      <input type="text" formControlName="editband" placeholder="band" name="editband" class="form-control" required>
+      <input type="text" formControlName="band" placeholder="band" name="editband" class="form-control" required>
     </label>
     <label> Genre
-      <input type="text" class="form-control" formControlName="editgenre" name="editgenre" placeholder="genre">
+      <input type="text" class="form-control" formControlName="genre" name="editgenre" placeholder="genre">
     </label>
     <label> Label
-      <input type="text" class="form-control" formControlName="editlabel" name="editlabel" placeholder="label">
+      <input type="text" class="form-control" formControlName="label" name="editlabel" placeholder="label">
     </label>
     <label> Producers
-      <input type="text" class="form-control" formControlName="editproducer" name="editproducer"
+      <input type="text" class="form-control" formControlName="producer" name="editproducer"
         placeholder="producers">
     </label>
     <button type="button" class="btn btn-stan" (click)="closeUpdate()">Close</button>
     <p *ngFor="let album of albums">
       <button type="submit" class="btn btn-primary" (click)="saveChanges(album)"
-        [disabled]="this.editForm.invalid">Update Changes</button>
+        [disabled]="this.form.invalid">Update Changes</button>
     </p>
   </form>
-</div> -->
+</div>
 
 <style>
   .head {
