@@ -126,12 +126,12 @@ export class AlbumsComponent implements OnInit {
 
   saveChanges(item: any) {
     console.log(item);
-    // let data = {};
-    // data['name'] = item.name;
-    // data['band'] = item.band;
-    // data['genre'] = item.genre;
-    // data['label'] = item.label;
-    // data['producer'] = item.producer;
+    let data = {};
+    data['name'] = item.name;
+    data['band'] = item.band;
+    data['genre'] = item.genre;
+    data['label'] = item.label;
+    data['producer'] = item.producer;
     this._albumsservise.updateAlbum(item.id, item);
     // subscribe
     this.hideenForm = false;

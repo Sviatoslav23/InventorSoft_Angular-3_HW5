@@ -22,11 +22,11 @@ export class albumsservise {
 
     // update
     updateAlbum(dataId, data) {
-        this.firestore.doc("albums/" + dataId).update(data);
+        return this.firestore.doc("albums/" + dataId).update(data);
     }
 
     //delete
     deleteAlbum(dataId) {
-        this.firestore.doc('albums/' + dataId).delete();
+       return this.firestore.doc('albums/' + dataId).delete();
     }
 }
