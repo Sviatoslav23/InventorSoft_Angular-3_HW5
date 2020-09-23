@@ -48,13 +48,13 @@
         <input type="text" formControlName="band" placeholder="band" name="band" class="form-control" required>
       </label>
       <label> Genre
-        <input type="text" class="form-control" formControlName="genre" name="genre" placeholder="genre">
+        <input type="text" class="form-control" formArrayName="genre" name="genre" placeholder="genre">
       </label>
       <label> Label
-        <input type="text" class="form-control" formControlName="label" name="label" placeholder="label">
+        <input type="text" class="form-control" formArrayName="label" name="label" placeholder="label">
       </label>
       <label> Producers
-        <input type="text" class="form-control" formControlName="producer" name="producer" placeholder="producers">
+        <input type="text" class="form-control" formArrayName="producer" name="producer" placeholder="producers">
       </label>
       <button type="button" class="btn btn-stan" (click)="closeForm()">Close</button>
       <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="this.form.invalid">Ok</button>
@@ -80,14 +80,13 @@
       <input type="text" class="form-control" formControlName="label" name="editlabel" placeholder="label">
     </label>
     <label> Producers
-      <input type="text" class="form-control" formControlName="producer" name="editproducer"
-        placeholder="producers">
+      <input type="text" class="form-control" formControlName="producer" name="editproducer" placeholder="producers">
     </label>
     <button type="button" class="btn btn-stan" (click)="closeUpdate()">Close</button>
-    <p *ngFor="let album of albums">
-      <button type="submit" class="btn btn-primary" (click)="saveChanges(album)"
-        [disabled]="this.form.invalid">Update Changes</button>
-    </p>
+    <button *ngFor="let album of albums" type="submit" class="btn btn-primary" (click)="saveChanges(album)"
+      [disabled]="this.form.invalid">Update
+      Changes</button>
+
   </form>
 </div>
 
@@ -138,7 +137,7 @@
   }
 
   .btn-del {
-    color: red
+    color: red;
   }
 
   .edit-btn,
@@ -166,5 +165,6 @@
   .head h2 {
     color: rgb(65, 52, 184);
   }
+
 
 </style>

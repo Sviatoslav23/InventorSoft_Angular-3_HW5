@@ -6,17 +6,26 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire";
 
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { PokemonsComponent } from './pokemons/pokemons.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PokemonsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +33,17 @@ import { ReactiveFormsModule } from "@angular/forms";
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
+    MatSidenavModule,
     MatButtonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   bootstrap: [AppComponent]
 })

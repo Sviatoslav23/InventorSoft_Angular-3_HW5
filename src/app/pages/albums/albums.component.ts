@@ -32,10 +32,6 @@ export class AlbumsComponent implements OnInit {
     genre: [''],
     label: [''],
     producer: [''],
-    //email to FormArray
-    // emails: this.fb.array([
-    //   this.fb.control('')
-    // ])
   });
 
   // editForm = this.fb.group({
@@ -133,7 +129,6 @@ export class AlbumsComponent implements OnInit {
     data['label'] = item.label;
     data['producer'] = item.producer;
     this._albumsservise.updateAlbum(item.id, item);
-    // subscribe
     this.hideenForm = false;
   }
 

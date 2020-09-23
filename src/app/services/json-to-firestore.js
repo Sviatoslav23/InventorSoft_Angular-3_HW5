@@ -19,6 +19,7 @@ const db = firebase.firestore();
 albums.forEach(function (obj) {
     db.collection("albums")
         .add({
+            id: obj.name,
             name: obj.name,
             band: obj.band,
             genre: obj.genre,
